@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang='en'> 
+<!-- 
+    Author: Jake Moriarty 
+    All Rights Reserved
+-->
+<head> 
+    <meta charset='UTF-8'>
+    <title> Mort's Companion Calculator  </title>
+    <link rel = 'stylesheet' href = 'MortsCompanionCalculator.css'>
+</head>
+<body style="background-color: pink;"></body>
+<body> 
+    <h1> 
+         Welcome to Mort's Companion Calculator! :)
+
+    </h1>
+    <h3>
+        Instructions: Fill out this form if you desire this hunk of meat.
+        <br /><br />
+        The responses are represented with phrases relevant to the question. The first response is strongly agree and the amount of agreement decreases going down the list. 
+        <br /><br />
+        Your likelihood of getting a little taste will be displayed at the bottom after the form is completed and the button is clicked. 
+    </h3>
+</body>
+<style>
+     h1 {text-align: center}
+     h2 {text-align: center}
+     h3 {text-align: center}
+</style>
+<br /><br />
+<h2>
+    <label for="q1">Tony Soprano is the best TV protagonist of all time.</label>
+    <br /><br />
+<select id="question1">
+  <option value="5">Hes a noble member of the Fugawi Tribe.</option>
+  <option value="4">He ain't runnin a popularity contest</option>
+  <option value="3">Whatever happened to Gary Cooper?</option>
+  <option value="2">Vaffanculo.</option>
+  <option value="1">He never had the makings of a varsity athlete.</option>
+  </select>
+  <br /><br />
+  <label for="q2">We live in a multiverse.</label>
+  <br /><br />
+<select id="question2">
+  <option value="5">The quantum multiverse is now and forever will be.</option>
+  <option value="4">Likely so but Bohr potentially could be right. </option>
+  <option value="3">Choose this if you like String Theory</option>
+  <option value="2">Bohr and Heisenberg were right.</option>
+  <option value="1">We live in an ever expanding singular egg.</option>
+  </select>
+  <br /><br />
+  <label for="q3">Pugs are ugly.</label>
+  <br /><br />
+  <select id="question3">
+    <option value="5">Pugs are gross as seen with my eyes.</option>
+    <option value="4">Pugs aren't my favorite.</option>
+    <option value="3">I dont mind pugs.</option>
+    <option value="2">Pugs are cool but belong on the floor. </option>
+    <option value="1">Pugs rule and they belong in a blanket on the couch.</option>
+    </select>
+    <br /><br />
+    <label for="q4">Crossfit is superior to traditional workouts.</label>
+    <br /><br />
+<select id="question4">
+  <option value="5">I get the best lift from the dynamic movements!</option>
+  <option value="4">I could do a crossfit workout.</option>
+  <option value="3">I would rather sit on the couch.</option>
+  <option value="2">I prefer natural movements.</option>
+  <option value="1">Crossfit is inherently inferior.</option>
+  </select>
+  <br /><br />
+  <label for="q5">IPA's are better than domestics 99% of the time.</label>
+  <br /><br />
+<select id="question5">
+  <option value="5">Yep and only those with class sip upon them.</option>
+  <option value="4">I could do a Lagunitas or 3 Floyds.</option>
+  <option value="3">I like hard liquor.</option>
+  <option value="2">Budlights and Miller Lites are better.</option>
+  <option value="1">I actually enjoy drinking dogwater.</option>
+  </select>
+  <br /><br />
+<button onclick="calculateCompatability()">Calculate Compatability</button>
+<p id="compatability"></p>
+
+</h2>
+<div class='container'>
+    <div id='l-ball' class='ball'>
+      <div class='face face-l'>
+        <div class='eye eye-l'></div>
+        <div class='eye eye-r'></div>
+        <div class='mouth'></div>
+      </div>
+    </div><div id='r-ball' class='ball'>
+      <div class='face face-r'>
+        <div class='eye eye-l eye-r-p'></div>
+        <div class='eye eye-r eye-r-p'></div>
+        <div class='mouth mouth-r'></div>
+        <div class='kiss-m'>
+     
+          <div class='kiss'></div>
+          <div class='kiss'></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+    console.log('Starting Matchmaker with Mort')
+    
+    
+    function calculateCompatability() {
+       
+        console.log("calculateCompatability()")
+    
+        const DESIRED_RESPONSE = [
+            5, 
+            4, 
+            1, 
+            1, 
+            5
+        ]
+        const WEIGHTED_SCORE = [ 
+            5,
+            2,
+            5,
+            1,
+            3
+        ]
+        const MAXIMUM_SCORE = 80
+    let question1Response = document.getElementById('question1').selectedOptions[0].value
+    let question2Response = document.getElementById('question2').selectedOptions[0].value
+    let question3Response = document.getElementById('question3').selectedOptions[0].value
+    let question4Response = document.getElementById('question4').selectedOptions[0].value
+    let question5Response = document.getElementById('question5').selectedOptions[0].value
+    
+    console.log("Question 1 Responses:")
+    console.log(document.getElementById('question1').selectedOptions[0].text)
+    console.log(document.getElementById('question1').selectedOptions[0].value)
+    console.log(question1Response)
+    
+    console.log("Question 2 Responses:")
+    console.log(document.getElementById('question2').selectedOptions[0].text)
+    console.log(document.getElementById('question2').selectedOptions[0].value)
+    console.log(question2Response)
+        
+    console.log("Question 3 Responses:")
+    console.log(document.getElementById('question3').selectedOptions[0].text)
+    console.log(document.getElementById('question3').selectedOptions[0].value)
+    console.log(question3Response)
+    
+    console.log("Question 4 Responses:")
+    console.log(document.getElementById('question4').selectedOptions[0].text)
+    console.log(document.getElementById('question4').selectedOptions[0].value)
+    console.log(question4Response)
+    
+    console.log("Question 5 Responses:")
+    console.log(document.getElementById('question5').selectedOptions[0].text)
+    console.log(document.getElementById('question5').selectedOptions[0].value)
+    console.log(question5Response)
+    
+    let q1compatability = 5 - Math.abs(question1Response-DESIRED_RESPONSE[0])
+    q1compatability = q1compatability * WEIGHTED_SCORE[0]
+    let q2compatability = 5 - Math.abs(question2Response-DESIRED_RESPONSE[1])
+    q2compatability = q2compatability * WEIGHTED_SCORE[1]
+    let q3compatability = 5 - Math.abs(question3Response-DESIRED_RESPONSE[2])
+    q3compatability = q3compatability * WEIGHTED_SCORE[2]
+    let q4compatability = 5 - Math.abs(question4Response-DESIRED_RESPONSE[3])
+    q4compatability = q4compatability * WEIGHTED_SCORE[3]
+    let q5compatability = 5 - Math.abs(question5Response-DESIRED_RESPONSE[4])
+    q5compatability = q5compatability * WEIGHTED_SCORE[4]
+    
+    
+    console.log(q1compatability)
+    console.log(q2compatability)
+    console.log(q3compatability)
+    console.log(q4compatability)
+    console.log(q5compatability)
+    let absolutecompatability = q1compatability + q2compatability + q3compatability + q4compatability + q5compatability
+    absolutecompatability *= 100 / MAXIMUM_SCORE
+    absolutecompatability = Math.round(absolutecompatability)
+    console.log(absolutecompatability)
+    if (absolutecompatability >= 90){
+        document.getElementById("compatability").innerHTML = "Your likelihood of tasting this eyecandy is ...." + absolutecompatability + "%" +  "\nGabagool on me?" 
+    } 
+    else if (absolutecompatability <= 89 && absolutecompatability >= 75){ 
+        document.getElementById("compatability").innerHTML = "Your likelihood of tasting this eyecandy is ...." + absolutecompatability + "%" + "\nIf you can integrate, lets mate."
+    }
+    else if (absolutecompatability <= 74 && absolutecompatability >= 60){ 
+        document.getElementById("compatability").innerHTML = "Your likelihood of tasting this eyecandy is ...." + absolutecompatability + "%" +  "\nYou probably like Miller Lite." 
+    }
+    else if (absolutecompatability <= 59){ 
+        document.getElementById("compatability").innerHTML = "Your likelihood of tasting this eyecandy is ...." + absolutecompatability + "%" +  "\nMaybe next year...probably not though"
+    }
+    else {
+        document.getElementById("compatability").innerHTML = "Your likelihood of tasting this eyecandy is.... " + absolutecompatability}
+    }
+    </script>
+    </body>
+    </html>
